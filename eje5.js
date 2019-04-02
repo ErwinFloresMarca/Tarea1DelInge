@@ -12,6 +12,54 @@ function cinco(p,n){
     suma=parseInt(suma/10);
   }
   return total;
+}
+
+function tres(x){
+  var r;
+  for(var i=0;i<x.length;i++){
+    if(x.charAt(i)=='('){
+      r=x.substring(0,i)+voltear(x.substring(i+1));
+      return r;
+    }
+  }
 
 }
-console.log(cinco(5,1));
+function voltear(x){
+    var result="";
+    var aux1="";
+    for(var i=0;i<x.length;i++){
+
+      if(x.charAt(i)=='('){
+        x=aux1+voltear(x.substring(i+1));
+      }
+
+      if(x.charAt(i)==')'){
+          var aux2="";
+          for(var j=aux1.length-1;j>=0;j--)
+            aux2=aux2+aux1.charAt(j);
+          return aux2+x.substring(i+1);
+      }
+      else {
+        aux1=aux1+x.charAt(i);
+      }
+    }
+    return result;
+}
+
+function cuatro(x){
+  var tam=parseInt(x.length);
+  if(tam%2==1)
+    return false;
+  else {
+    tam=parseInt(tam/2);
+    return (x.substring(0,tam)==(x.substring(tam,tam*2)))
+  }
+}
+
+function dos(n){
+  var r=parseInt(((n-1)/100))+1
+  return r;
+}
+console.log(cuatro("aa"));
+console.log(dos(100));
+console.log(tres("foo(bar(baz))blim"));
