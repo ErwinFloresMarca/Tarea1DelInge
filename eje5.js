@@ -15,14 +15,15 @@ function cinco(p,n){
 }
 
 function tres(x){
-  var r;
-  for(var i=0;i<x.length;i++){
+  for(var i=0;i<x.length;){
     if(x.charAt(i)=='('){
-      r=x.substring(0,i)+voltear(x.substring(i+1));
-      return r;
-    }
-  }
+      x=x.substring(0,i)+voltear(x.substring(i+1));
 
+    }
+    else
+      i++;
+  }
+  return x;
 }
 function voltear(x){
     var result="";
@@ -60,6 +61,7 @@ function dos(n){
   var r=parseInt(((n-1)/100))+1
   return r;
 }
+
 console.log(cuatro("aa"));
 console.log(dos(100));
-console.log(tres("foo(bar(baz))blim"));
+console.log(tres("de(gs)ra(aic)"));
